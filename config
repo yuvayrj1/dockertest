@@ -1,0 +1,5 @@
+Host *
+IdentityFile /root/.ssh/github_rsa
+HostName repos.infiswift.io
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  node:
+    container_name: $PROJECT-$CI_ENVIRONMENT_NAME-$CI_PROJECT_NAME
+    image: $LATEST_VER
+    environment:
+      NODE_ENV: $CI_ENVIRONMENT_NAME
+    ports:
+      - "3000:3000"
+    restart: on-failure

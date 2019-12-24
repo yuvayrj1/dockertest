@@ -1,0 +1,27 @@
+## Deployment pack"
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Log into dockerhub registry | force re-auth
+    docker_login:
+      registry: dockerhub.aximsoft.com
+      username: ASFDJAOWEUAASK
+      password: DFKDIEFJ3AOWEA3UW3J
+
+  - name: Pull an latest image from dockerhub.aximsoft.com registry
+    docker_image:
+      name: "{{LATEST_VER}}"
+
+  - name: Deploying the docker-containers to the "{{ENV}}" - "{{CI_PROJECT_NAME}}"
+    docker_container:
+      name: "{{PROJECT}}_{{ENV}}_{{CI_PROJECT_NAME}}"
+      image: "{{LATEST_VER}}"
+      env:
+        ENV: "{{ENV}}"
+      recreate: yes
+      state: started
+      restart: yes
+      ports:
+        - "{{PORTS}}"
+      volumes:
+        - "devcdn:/docker-node/cdn:rw"
