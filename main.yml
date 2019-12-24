@@ -1,15 +1,11 @@
 ## Deployment pack"
 - hosts: localhost
   become: true
-  vars: 
-    - version : "$BUILD_NUMBER"
   tasks:
-
-
   - name: Deploying the docker-containers to the localhost
     docker_container:
       name: "docker_deploy"
-      image: yuvayrj1/dockertest:{{version}}
+      image: yuvayrj1/dockertest
       recreate: yes
       state: started
       restart: yes
