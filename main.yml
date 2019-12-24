@@ -2,20 +2,12 @@
 - hosts: localhost
   become: true
   tasks:
-  - name: Log into dockerhub registry | force re-auth
-    docker_login:
-      registry: yuvayrj1/dockertest
-      username: yuvayrj1
-      password: Yuv@yrj1
 
-  - name: Pull an latest image from dockerhub registry
-    docker_image:
-      name: "{{LATEST_VER}}"
 
   - name: Deploying the docker-containers to the localhost
     docker_container:
       name: "docker_deploy"
-      image: "{{LATEST_VER}}"
+      image: yuvayrj1/dockertest:$BUILD_NUMBER
       recreate: yes
       state: started
       restart: yes
