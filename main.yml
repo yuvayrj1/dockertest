@@ -7,7 +7,7 @@
   - name: Deploying the docker-containers to the localhost
     docker_container:
       name: "docker_deploy"
-      image: yuvayrj1/dockertest:$BUILD_NUMBER
+      image: yuvayrj1/dockertest:{{$BUILD_NUMBER}}
       recreate: yes
       state: started
       restart: yes
