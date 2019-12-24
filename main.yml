@@ -4,24 +4,21 @@
   tasks:
   - name: Log into dockerhub registry | force re-auth
     docker_login:
-      registry: dockerhub.aximsoft.com
-      username: ASFDJAOWEUAASK
-      password: DFKDIEFJ3AOWEA3UW3J
+      registry: yuvayrj1/dockertest
 
   - name: Pull an latest image from dockerhub.aximsoft.com registry
     docker_image:
       name: "{{LATEST_VER}}"
 
-  - name: Deploying the docker-containers to the "{{ENV}}" - "{{CI_PROJECT_NAME}}"
+  - name: Deploying the docker-containers to the localhost
     docker_container:
-      name: "{{PROJECT}}_{{ENV}}_{{CI_PROJECT_NAME}}"
+      name: "docker_deploy"
       image: "{{LATEST_VER}}"
-      env:
-        ENV: "{{ENV}}"
       recreate: yes
       state: started
       restart: yes
       ports:
-        - "{{PORTS}}"
+              - 8090:3000
       volumes:
         - "devcdn:/docker-node/cdn:rw"
+
