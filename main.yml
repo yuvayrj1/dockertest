@@ -6,7 +6,7 @@
     docker_login:
       registry: yuvayrj1/dockertest
       username: yuvayrj1
-      password:Yuv@yrj1
+      password: Yuv@yrj1
 
   - name: Pull an latest image from dockerhub registry
     docker_image:
