@@ -5,8 +5,10 @@
   - name: Log into dockerhub registry | force re-auth
     docker_login:
       registry: yuvayrj1/dockertest
+      username: yuvayrj1
+      password:Yuv@yrj1
 
-  - name: Pull an latest image from dockerhub.aximsoft.com registry
+  - name: Pull an latest image from dockerhub registry
     docker_image:
       name: "{{LATEST_VER}}"
 
