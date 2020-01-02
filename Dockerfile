@@ -1,6 +1,5 @@
 #FROM dockerhub.infi.com/intel:v1.0.1
 FROM node:9
-MAINTAINER devops@aximsoft.com
 WORKDIR /docker-node
 RUN mkdir /root/.ssh
 COPY . /docker-node
